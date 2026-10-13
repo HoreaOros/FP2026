@@ -1,4 +1,5 @@
 ﻿using System.Numerics;
+using System.Globalization;
 
 namespace _1013
 {
@@ -51,6 +52,40 @@ namespace _1013
             // long - 64 biti, intreg cu semn, [-2^63, 2^63-1]
             // ulong - 64 biti, intreg fara semn, [0, 2^64 - 1]
             // decimal
+            // float
+            // double
+
+
+            float suma = 0.0f;
+            for (int i = 0; i < 1000000; i++)
+                suma += 0.001f;
+            Console.WriteLine(suma);
+
+            // char - caracter Unicode
+            string message = "Hello World!";
+            foreach(char c in message)
+            { 
+                Console.WriteLine(c); 
+            }
+
+
+            int an = 2026;
+
+            DateTime dt = DateTime.Now;
+            Console.WriteLine(dt);
+
+            // Display current date in the Hebrew calendar (numeric)
+            var hebrewCalendar = new HebrewCalendar();
+            int hebrewYear = hebrewCalendar.GetYear(dt);
+            int hebrewMonth = hebrewCalendar.GetMonth(dt);
+            int hebrewDay = hebrewCalendar.GetDayOfMonth(dt);
+            Console.WriteLine($"Hebrew calendar date (numeric): {hebrewDay}/{hebrewMonth}/{hebrewYear}");
+
+            // Display using Hebrew culture with the HebrewCalendar for localized month names
+            var hebrewCulture = new CultureInfo("he-IL");
+            hebrewCulture.DateTimeFormat.Calendar = hebrewCalendar;
+            Console.WriteLine("Hebrew calendar (long date): " + dt.ToString("D", hebrewCulture));
+            Console.WriteLine("Hebrew calendar (custom): " + dt.ToString("dd MMMM yyyy", hebrewCulture));
         }
     }
 }
