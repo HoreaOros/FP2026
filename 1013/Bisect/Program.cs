@@ -6,7 +6,7 @@ namespace Bisect
         static void Main(string[] args)
         {
             int n = int.Parse(Console.ReadLine());
-
+            
             Console.WriteLine(Bisect(n)? "bisect": "nebisect");
         }
 
