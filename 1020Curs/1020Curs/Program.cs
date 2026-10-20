@@ -1,5 +1,8 @@
-﻿
-
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net.NetworkInformation;
+using System.Numerics;
 namespace _1020Curs
 {
     internal class Program
@@ -10,8 +13,76 @@ namespace _1020Curs
             //P1v2();
             //P2();
             //P3();
-            P4();
+            //P4();
+            //P5();
+            //P6();
+
+            P7();
         }
+
+        private static void P7()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int difMin = int.MaxValue;
+            int a, b, x = 0, y = 0, suma = 0;
+            a = int.Parse(Console.ReadLine());
+            for (int i = 1; i < n; i++)
+            {
+                b = int.Parse(Console.ReadLine());
+
+                if(Math.Abs(a - b) < difMin)
+                {
+                    difMin = Math.Abs(a - b);
+                    x = a; y = b;
+                    suma = a + b;
+                }
+                else if(Math.Abs(a - b) == difMin)
+                {
+                    if(a  +  b < suma)
+                    {
+                        x = a; y = b;
+                    }
+                }
+                a = b;
+            }
+            Console.WriteLine($"{x} {y}");
+        }
+
+        private static void P6()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int max1 = int.MinValue, max2 = int.MinValue;
+
+            for (int i = 0; i < n; i++)
+            {
+                int nr = int.Parse((Console.ReadLine()));
+                if (nr >= max1)
+                {
+                    max2 = max1;
+                    max1 = nr;
+                }
+                else
+                    if (nr > max2)
+                        max2 = nr;
+            }
+
+            Console.WriteLine($"{max1} {max2}");
+        }
+
+        private static void P5()
+        {
+            int n = int.Parse(Console.ReadLine());
+            int nr;
+            int maxim = int.MinValue;
+            List<int> lst = new List<int>();
+            for (int i = 0; i < n; i++)
+            {
+                nr = int.Parse(Console.ReadLine());
+                lst.Add(nr);
+            }
+            Console.WriteLine(lst.Max());
+        }
+
         /// <summary>
         ///    *
         ///   * *
